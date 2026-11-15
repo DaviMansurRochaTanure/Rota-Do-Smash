@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rota do Smash</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="logo-container">
+            <img src="imagens/image-Photoroom (3).png" alt="" id="logo">
+        </div>
+        
+        <nav id="divdoslinks">
+            <a href="index.html" class="Links" id="link-home">Home</a>
+            <a href="index.html#secao-cardapio" class="Links" id="link-cardapio">Cardápio</a>
+            <a href="historico.html" class="Links">Historico de Pedidos</a>
+            <a href="perfil.html" class="Links">Perfil</a>
+            <a href="carrinho.html" class="Links">Carrinho</a>
+        </nav>
+
+        <div id="divDaDireita">
+            <div id="ClaroEscuro">
+                <button class="btn-tema TemaEscuro" title="Tema Escuro">
+                    <img src="imagens/3-removebg-preview (1).png" alt="Lua" class="icone-tema">
+                </button>
+                <button class="btn-tema TemaClaro" title="Tema Claro">
+                    <img src="imagens/2-removebg-preview (1).png" alt="Sol" class="icone-tema">
+                </button>
+            </div>
+
+            <div id="carrinho" onclick="window.location.href = 'carrinho.html';">
+                <img src="imagens/unnamed-removebg-preview.png" alt="" id="carrinho-img">
+                <span class="numero-carrinho">(0)</span>
+            </div>
+
+            <a href="#" id="Cadastro">Entrar/Cadastrar</a>
+        </div>
+    </header>
+
+    <section id="secao-banner" class="secao-banner">
+        <div class="banner">
+            <div class="banner-conteudo">
+                <h1 id="h1-banner">O verdadeiro crocantinho<br>da chapa na sua porta.</h1>
+                <a href="#secao-cardapio" class="btn-banner">Ver Cardápio.</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="area-destaque">
+        <div class="Carrosel" id="carrossel-principal">
+            <div class="carrossel-slides">
+                <div class="carrossel-slide ativo">
+                    <img src="imagens/4ef76118-eddd-4c05-969a-3c96cf4f539a.png" alt="">
+                </div>
+                <div class="carrossel-slide">
+                    <img src="imagens/c9b4acf3-f448-421d-a202-5f644462946a.png" alt="">
+                </div>
+                <div class="carrossel-slide">
+                    <img src="imagens/0dcd9df0-137f-4fad-9994-221e7572f943.png" alt="">
+                </div>
+            </div>
+            <button class="carrossel-seta anterior" aria-label="Imagem anterior">&#10094;</button>
+            <button class="carrossel-seta proximo" aria-label="Próxima imagem">&#10095;</button>
+            <div class="carrossel-indicadores"></div>
+        </div>
+
+        <div class="texto-destaque">
+            <span class="subtitulo-destaque">ROTA DO SMASH</span>
+            <h2>Seu próximo hambúrguer favorito está aqui.</h2>
+            <p>
+                Sabor de verdade, ingredientes selecionados e aquele
+                toque especial da chapa. Escolha seu favorito e peça agora!
+            </p>
+            <a href="#secao-cardapio" class="btn-texto-destaque">
+                Explorar cardápio <span>→</span>
+            </a>
+        </div>
+    </div>
+
+    <section id="secao-cardapio" class="secao-cardapio">
+        <div class="categorias">
+            <div id="categoriasv2">
+            <button class="cat-btn ativo" id="ativo">Todos</button>
+            <button class="cat-btn" id="test">Smash Burgers</button>
+            <button class="cat-btn" id="test4">Combos</button>
+            <button class="cat-btn" id="test2">Acompanhamentos</button>
+            <button class="cat-btn" id="test3">Bebidas</button>
+            </div>
+            <input type="search" id="barra-pesquisa" placeholder="Digite o Nome do produto">
+        </div>
+
+        <div class="produtos-grid" id="mudarTamanho">
+            <div class="card-produto hambur" id="classeee" data-id="1" data-preco="27.90">
+                <img src="imagens/hamburguer1.jpg" alt="" class="produto-img">
+                <h3>Burger Clássico com Queijo</h3>
+                <p>Pão brioche, hambúrguer de 150g, queijo prato, alface, tomate e molho especial.</p>
+                <span class="preco">R$ 27,90</span>
+                <button class="btn-adicionar">+ Adicionar</button>
+            </div>
+
+            <div class="card-produto hambur" data-id="2" data-preco="36.90">
+                <img src="imagens/hamburguer2.jpg" alt="" class="produto-img">
+                <h3>Double Bacon Cheddar</h3>
+                <p>Dois hambúrgueres de 120g, cheddar duplo, bacon crocante e barbecue.</p>
+                <span class="preco">R$ 36,90</span>
+                <button class="btn-adicionar">+ Adicionar</button>
+            </div>
+
+            <div class="card-produto hambur" data-id="3" data-preco="29.90">
+                <img src="imagens/hamburguer3.jpg" alt="" class="produto-img">
+                <h3>Smash Burger Duplo</h3>
+                <p>Dois smash burgers fininhos com crostinha, cheddar, picles e cebola.</p>
+                <span class="preco">R$ 29,90</span>
+                <button class="btn-adicionar">+ Adicionar</button>
+            </div>
+
+            <div class="card-produto hambur" data-id="4" data-preco="26.90">
+                <img src="imagens/hamburguer4.jpg" alt="" class="produto-img">
+                <h3>Chicken Burger</h3>
+                <p>Frango empanado, muçarela, maionese temperada e coleslaw no pão com gergelim.</p>
+                <span class="preco">R$ 26,90</span>
+                <button class="btn-adicionar">+ Adicionar</button>
+            </div>
+
+            <div class="card-produto acomp" data-id="6" data-preco="14.90">
+                <img src="imagens/acompanhamento1.jpg" alt="" class="produto-img">
+                <h3>Batata Frita Crocante</h3>
+                <p>Batatas palito douradas, sequinhas e temperadas com sal e páprica.</p>
+                <span class="preco">R$ 14,90</span>
+                <button class="btn-adicionar">+ Adicionar</button>
+            </div>
+
+            <div class="card-produto acomp" data-id="7" data-preco="24.90">
+                <img src="imagens/acompanhamento2.jpg" alt="" class="produto-img">
+                <h3>Batata Suprema com Bacon e Cheddar</h3>
+                <p>Porção de batatas cobertas com cheddar cremoso e bacon em cubos.</p>
+                <span class="preco">R$ 24,90</span>
+                <button class="btn-adicionar">+ Adicionar</button>
+            </div>
+
+            <div class="card-produto acomp" data-id="8" data-preco="17.90">
+                <img src="imagens/acompanhamento3.jpg" alt="" class="produto-img">
+                <h3>Onion Rings</h3>
+                <p>Anéis de cebola empanados e fritos, servidos com molho barbecue ou verde.</p>
+                <span class="preco">R$ 17,90</span>
+                <button class="btn-adicionar">+ Adicionar</button>
+            </div>
+
+            <div class="card-produto acomp" data-id="9" data-preco="18.90">
+                <img src="imagens/acompanhamento4.jpg" alt="" class="produto-img">
+                <h3>Nuggets de Frango Crocantes</h3>
+                <p>Pedaços macios de frango empanados com molho mostarda e mel.</p>
+                <span class="preco">R$ 18,90</span>
+                <button class="btn-adicionar">+ Adicionar</button>
+            </div>
+
+            <div class="card-produto beb" data-id="10" data-preco="24.90">
+                <img src="imagens/bebida1.jpg" alt="" class="produto-img">
+                <h3>Milk-shake de Nutella com Leite Ninho</h3>
+                <p>Sorvete de baunilha, Nutella, leite Ninho e chantilly.</p>
+                <span class="preco">R$ 24,90</span>
+                <button class="btn-adicionar">+ Adicionar</button>
+            </div>
+
+            <div class="card-produto beb" data-id="11" data-preco="19.90">
+                <img src="imagens/bebida2.jpg" alt="" class="produto-img">
+                <h3>Milk-shake de Morango</h3>
+                <p>Sorvete artesanal, calda de morango e cobertura de chantilly.</p>
+                <span class="preco">R$ 19,90</span>
+                <button class="btn-adicionar">+ Adicionar</button>
+            </div>
+
+            <div class="card-produto beb" data-id="12" data-preco="7.00">
+                <img src="imagens/bebida3.jpg" alt="" class="produto-img">
+                <h3>Bebidas (350ml)</h3>
+                <p>Opções de refrigerantes ou sucos naturais de laranja ou limão.</p>
+                <span class="preco">R$ 7,00</span>
+                <button class="btn-adicionar">+ Adicionar</button>
+            </div>
+
+            <div class="card-produto beb" data-id="13" data-preco="16.90">
+                <img src="imagens/bebida4.jpg" alt="" class="produto-img">
+                <h3>Sundae Doce de Leite com Paçoca</h3>
+                <p>Sorvete de baunilha, doce de leite e farofa de paçoca.</p>
+                <span class="preco">R$ 16,90</span>
+                <button class="btn-adicionar">+ Adicionar</button>
+            </div>
+
+            <div class="card-produto combo" data-id="5" data-preco="39.90">
+                <img src="imagens/934f66ce-b444-4c5e-9350-776eb8e768a3.png" alt="" class="produto-img">
+                <h3>Combo Clássico</h3>
+                <p>Burguer clássico, batatas fritas e refrigerante de lata.</p>
+                <span class="preco">R$ 39,90</span>
+                <button class="btn-adicionar">+ Adicionar</button>
+            </div>
+
+            <div class="card-produto combo" data-id="14" data-preco="42.90">
+                <img src="imagens/5f078de5-4a99-43e2-ae4b-68391ba526b6.png" alt="" class="produto-img">
+                <h3>Combo Smash Explosivo</h3>
+                <p>Smash duplo, batatas fritas e refrigerante.</p>
+                <span class="preco">R$ 42,90</span>
+                <button class="btn-adicionar">+ Adicionar</button>
+            </div>
+
+            <div class="card-produto combo" data-id="15" data-preco="49.90">
+                <img src="imagens/79bad5c0-b301-49da-a3d3-07970d311055.png" alt="" class="produto-img">
+                <h3>Combo Bacon Supreme</h3>
+                <p>Burguer duplo com bacon, batatas fritas e refrigerante.</p>
+                <span class="preco">R$ 49,90</span>
+                <button class="btn-adicionar">+ Adicionar</button>
+            </div>
+
+            <div class="card-produto combo" data-id="16" data-preco="26.90">
+                <img src="imagens/95a04286-703f-4a36-927d-5b39ccdd3655.png" alt="" class="produto-img">
+                <h3>Combo Chicken Crunch</h3>
+                <p>Frango crocante, batatas fritas e refrigerante.</p>
+                <span class="preco">R$ 26,90</span>
+                <button class="btn-adicionar">+ Adicionar</button>
+            </div>
+        </div>
+    </section>
+
+
+    
+    <footer>
+        <div id="divEsquerda">
+            <img src="imagens/image-Photoroom (3).png" alt="" id="logo-footer">
+            <h4 id="tituloFooter">Burguers artesanal <br> com muito sabor</h4>
+        </div>
+
+        <div id="divDireita">
+            <div class="tresdivs">
+                <h3>NAVEGAÇÃO</h3>
+                <div class="linha"></div>
+                <ul id="ul-navegacao">
+                    <a href="index.html" class="botoes-nav">Home</a>
+                    <a href="index.html#secao-cardapio" class="botoes-nav">Cardápio</a>
+                    <a href="historico.html" class="botoes-nav">Historico de Pedidos</a>
+                    <a href="perfil.html" class="botoes-nav">Perfil</a>
+                    <a href="carrinho.html" class="botoes-nav">Carrinho</a>
+                </ul>
+            </div>
+
+            <div class="tresdivs">
+                <h3>CONTATO</h3>
+                <div class="linha"></div>
+                <div id="elementos-sla">
+                    <div class="slatbm">
+                        <img src="imagens/image-Photoroom.png" alt="" class="svgs1">
+                        <h4 class="h4-footer">Belo Horizonte - MG</h4>
+                    </div>
+                    <div class="slatbm">
+                        <img src="imagens/image-Photoroom (1).png" alt="" class="svgs2">
+                        <h4 class="h4-footer">(31) 98765-4321</h4>
+                    </div>
+                    <div class="slatbm">
+                        <img src="imagens/image-Photoroom (2).png" alt="" class="svgs3">
+                        <h4 class="h4-footer">contato@rotadosmash.com.br</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tresdivs">
+                <h3>NOS SIGA</h3>
+                <div class="linha"></div>
+                <div class="slatbm slatbmDireita">
+                    <img src="imagens/image-Photoroom (4).png" alt="" class="svgs3">
+                    <h4 class="h4-footer">Nosso Instagram</h4>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+    <div id="modal-auth" class="modal-overlay">
+    <div class="modal-container">
+        <button class="modal-fechar" id="btn-fechar-modal">&times;</button>
+        
+        
+        <div class="modal-coluna">
+            <h3>ENTRAR</h3>
+            <form id="form-login">
+                <label>E-mail</label>
+                <input type="email" id="login-email" placeholder="Seu e-mail" required>
+
+                <label>Senha</label>
+                <input type="password" id="login-senha" placeholder="Sua senha" required>
+
+                <button type="submit" class="btn-modal-submit">Acessar Minha Conta</button>
+            </form>
+        </div>
+
+        <div class="modal-divisor"></div>
+
+        
+        <div class="modal-coluna">
+            <h3>CADASTRAR</h3>
+            <form id="form-cadastro">
+                <label>Nome Completo</label>
+                <input type="text" id="cad-nome" placeholder="Seu nome" maxlength="100" required>
+
+                <label>E-mail</label>
+                <input type="email" id="cad-email" placeholder="Seu e-mail" maxlength="150" required>
+
+                <label>Telefone</label>
+                <input type="tel" id="cad-tel" placeholder="(00) 00000-0000" maxlength="15" required>
+
+                <label>CPF</label>
+                <input type="text" id="cad-cpf" placeholder="000.000.000-00" maxlength="14" required>
+
+                <label>Senha</label>
+                <input type="password" id="cad-senha" placeholder="Sua senha" maxlength="50" required>
+
+                <button type="submit" class="btn-modal-submit">Criar Minha Conta</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>

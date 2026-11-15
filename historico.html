@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rota do Smash</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="protegida">
+    <header>
+        <div id="logo-container">
+            <img src="imagens/image-Photoroom (3).png" alt="" id="logo">
+        </div>
+        
+        <nav id="divdoslinks">
+            <a href="index.html" class="Links" id="link-home">Home</a>
+            <a href="index.html#secao-cardapio" class="Links" id="link-cardapio">Cardápio</a>
+            <a href="historico.html" class="Links" id="titulo-especial">Historico de Pedidos</a>
+            <a href="perfil.html" class="Links">Perfil</a>
+            <a href="carrinho.html" class="Links">Carrinho</a>
+        </nav>
+
+        <div id="divDaDireita">
+            <div id="ClaroEscuro">
+                <button class="btn-tema TemaEscuro" title="Tema Escuro">
+                    <img src="imagens/3-removebg-preview (1).png" alt="Lua" class="icone-tema">
+                </button>
+                <button class="btn-tema TemaClaro" title="Tema Claro">
+                    <img src="imagens/2-removebg-preview (1).png" alt="Sol" class="icone-tema">
+                </button>
+            </div>
+
+            <div id="carrinho" onclick="window.location.href = 'carrinho.html';">
+                <img src="imagens/unnamed-removebg-preview.png" alt="" id="carrinho-img">
+                <span class="numero-carrinho">(0)</span>
+            </div>
+
+            <a href="#" id="Cadastro">Entrar/Cadastrar</a>
+        </div>
+    </header>
+
+    
+    <div id="pagina-historico">
+    <h1>Historico de Pedidos</h1>
+    <div id="lista-historico"></div>
+    </div>
+
+    
+    <footer>
+        <div id="divEsquerda">
+            <img src="imagens/image-Photoroom (3).png" alt="" id="logo-footer">
+            <h4 id="tituloFooter">Burguers artesanal <br> com muito sabor</h4>
+        </div>
+
+        <div id="divDireita">
+            <div class="tresdivs">
+                <h3>NAVEGAÇÃO</h3>
+                <div class="linha"></div>
+                <ul id="ul-navegacao">
+                    <a href="index.html" class="botoes-nav">Home</a>
+                    <a href="index.html#secao-cardapio" class="botoes-nav">Cardápio</a>
+                    <a href="historico.html" class="botoes-nav">Historico de Pedidos</a>
+                    <a href="perfil.html" class="botoes-nav">Perfil</a>
+                    <a href="carrinho.html" class="botoes-nav">Carrinho</a>
+                </ul>
+            </div>
+
+            <div class="tresdivs">
+                <h3>CONTATO</h3>
+                <div class="linha"></div>
+                <div id="elementos-sla">
+                    <div class="slatbm">
+                        <img src="imagens/image-Photoroom.png" alt="" class="svgs1">
+                        <h4 class="h4-footer">Belo Horizonte - MG</h4>
+                    </div>
+                    <div class="slatbm">
+                        <img src="imagens/image-Photoroom (1).png" alt="" class="svgs2">
+                        <h4 class="h4-footer">(31) 98765-4321</h4>
+                    </div>
+                    <div class="slatbm">
+                        <img src="imagens/image-Photoroom (2).png" alt="" class="svgs3">
+                        <h4 class="h4-footer">contato@rotadosmash.com.br</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tresdivs">
+                <h3>NOS SIGA</h3>
+                <div class="linha"></div>
+                <div class="slatbm slatbmDireita">
+                    <img src="imagens/image-Photoroom (4).png" alt="" class="svgs3">
+                    <h4 class="h4-footer">Nosso Instagram</h4>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
