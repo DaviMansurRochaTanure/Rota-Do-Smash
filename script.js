@@ -384,15 +384,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// ===== LOGIN E CADASTRO =====
-
-// Lê a lista de clientes cadastrados (se não existir nenhum, devolve lista vazia)
 
 function lerClientes() {
     return JSON.parse(localStorage.getItem("clientes")) || [];
 }
 
-// Devolve o cliente que está logado, ou null se ninguém estiver
 
 function clienteLogado() {
     const id = localStorage.getItem("clienteLogadoId");
@@ -400,7 +396,7 @@ function clienteLogado() {
     return lerClientes().find(c => c.id === Number(id)) || null;
 }
 
-// --- Proteção das páginas: sem login, volta para a home e abre o pop-up ---
+
 if (document.body.classList.contains("protegida") && !clienteLogado()) {
     sessionStorage.setItem("abrirModal", "sim");
     window.location.replace("index.html");
@@ -409,7 +405,7 @@ if (document.body.classList.contains("protegida") && !clienteLogado()) {
 const botaoEntrar = document.getElementById("Cadastro");
 const modalAuth = document.getElementById("modal-auth");
 
-// --- Botão do cabeçalho: vira "Sair" quando há alguém logado ---
+
 if (clienteLogado()) {
     botaoEntrar.textContent = "Sair";
 }
@@ -417,14 +413,14 @@ if (clienteLogado()) {
 botaoEntrar.addEventListener("click", function (e) {
     e.preventDefault();
     if (clienteLogado()) {
-        localStorage.removeItem("clienteLogadoId");   // faz o logout
+        localStorage.removeItem("clienteLogadoId");   
         window.location.href = "index.html";
     } else if (modalAuth) {
-        modalAuth.classList.add("ativo");             // abre o pop-up
+        modalAuth.classList.add("ativo");             
     }
 });
 
-// --- Pop-up: fechar e abrir automaticamente quando vier redirecionado ---
+
 if (modalAuth) {
     document.getElementById("btn-fechar-modal").addEventListener("click", function () {
         modalAuth.classList.remove("ativo");
@@ -440,7 +436,7 @@ if (modalAuth) {
     }
 }
 
-// --- Cadastro ---
+
 const formCadastro = document.getElementById("form-cadastro");
 
 if (formCadastro) {
@@ -449,8 +445,8 @@ if (formCadastro) {
 
         const nome = document.getElementById("cad-nome").value.trim();
         const email = document.getElementById("cad-email").value.trim().toLowerCase();
-        const telefone = document.getElementById("cad-tel").value.replace(/\D/g, "");  // só números
-        const cpf = document.getElementById("cad-cpf").value.replace(/\D/g, "");       // só números
+        const telefone = document.getElementById("cad-tel").value.replace(/\D/g, "");  
+        const cpf = document.getElementById("cad-cpf").value.replace(/\D/g, "");       
         const senha = document.getElementById("cad-senha").value;
 
         if (nome.length < 3) { alert("Digite seu nome completo."); return; }
@@ -463,7 +459,7 @@ if (formCadastro) {
         if (clientes.some(c => c.email === email)) { alert("Este e-mail já está cadastrado."); return; }
         if (clientes.some(c => c.cpf === cpf)) { alert("Este CPF já está cadastrado."); return; }
 
-        // o novo id é o do último cliente + 1 (ou 1, se for o primeiro)
+        
         let novoId = 1;
         if (clientes.length > 0) {
             novoId = clientes[clientes.length - 1].id + 1;
@@ -480,12 +476,12 @@ if (formCadastro) {
         });
 
         localStorage.setItem("clientes", JSON.stringify(clientes));
-        localStorage.setItem("clienteLogadoId", novoId);   // já entra logado
+        localStorage.setItem("clienteLogadoId", novoId);   
         window.location.reload();
     });
 }
 
-// --- Login ---
+
 const formLogin = document.getElementById("form-login");
 
 if (formLogin) {
@@ -519,8 +515,7 @@ if (formLogin) {
 
 
 
-// ===== CARRINHO =====
-// Cada cliente tem o seu: carrinho_1, carrinho_2...
+
 
 function chaveCarrinho() {
     return "carrinho_" + localStorage.getItem("clienteLogadoId");
@@ -535,7 +530,7 @@ function salvarCarrinho(carrinho) {
     atualizarContador();
 }
 
-// Soma as quantidades e mostra no (0) do cabeçalho
+
 function atualizarContador() {
     let total = 0;
 
@@ -550,7 +545,7 @@ function atualizarContador() {
 
 atualizarContador();
 
-// --- Botões "+ Adicionar" ---
+
 const botoesAdicionar = document.querySelectorAll(".btn-adicionar");
 
 botoesAdicionar.forEach(function (botao) {
@@ -560,7 +555,7 @@ botoesAdicionar.forEach(function (botao) {
             return;
         }
 
-        // pega o card do produto onde o botão está
+        
         const card = botao.closest(".card-produto");
         const id = Number(card.dataset.id);
 
@@ -583,7 +578,7 @@ botoesAdicionar.forEach(function (botao) {
 
         salvarCarrinho(carrinho);
 
-        // aviso rápido de que adicionou
+        
         botao.textContent = "✓ Adicionado";
         setTimeout(function () {
             botao.textContent = "+ Adicionar";
@@ -595,11 +590,11 @@ botoesAdicionar.forEach(function (botao) {
 
 
 
-// ===== PÁGINA DO CARRINHO =====
+
 const TAXA_ENTREGA = 0;
 const listaCarrinho = document.getElementById("lista-carrinho");
 
-// Transforma 71.7 em "R$ 71,70"
+
 function formatarPreco(valor) {
     return "R$ " + valor.toFixed(2).replace(".", ",");
 }
@@ -635,12 +630,11 @@ function desenharCarrinho() {
             </div>`;
     });
 
-    // Resumo do pedido
+
     document.getElementById("resumo-subtotal").textContent = formatarPreco(subtotal);
     document.getElementById("resumo-taxa").textContent = formatarPreco(TAXA_ENTREGA);
     document.getElementById("resumo-total").textContent = formatarPreco(subtotal + TAXA_ENTREGA);
 
-    // O botão só funciona se houver itens
     document.getElementById("btn-finalizar").disabled = (carrinho.length === 0);
 }
 
@@ -661,7 +655,7 @@ if (listaCarrinho) {
     desenharCarrinho();
     mostrarEndereco();
 
-    // Um único "ouvinte" para todos os botões da lista (+, - e ✕)
+   
     listaCarrinho.addEventListener("click", function (e) {
         const botao = e.target.closest("button");
         if (!botao) return;
@@ -703,14 +697,14 @@ if (listaCarrinho) {
 
 
 
-// ===== PÁGINA DO PERFIL =====
+
 const formPerfil = document.getElementById("form-perfil");
 
 function salvarClientes(lista) {
     localStorage.setItem("clientes", JSON.stringify(lista));
 }
 
-// Máscaras (mesma lógica das do cadastro)
+
 function mascaraCpf(valor) {
     let v = valor.replace(/\D/g, "").slice(0, 11);
     v = v.replace(/(\d{3})(\d)/, "$1.$2");
@@ -745,7 +739,7 @@ if (formPerfil) {
     const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
                    "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
-    // ---------- Preencher a tela com os dados do cliente ----------
+   
     function preencherPerfil() {
         const cliente = clienteLogado();
 
@@ -764,7 +758,7 @@ if (formPerfil) {
         campoCpf.value = mascaraCpf(cliente.cpf);
     }
 
-    // ---------- Mostrar o endereço no cartão lateral ----------
+
     function mostrarEnderecoPerfil() {
         const cliente = clienteLogado();
         const texto = document.getElementById("endereco-texto");
@@ -790,7 +784,7 @@ if (formPerfil) {
     preencherPerfil();
     mostrarEnderecoPerfil();
 
-    // ---------- Máscaras ao digitar ----------
+    
     campoTel.addEventListener("input", function () {
         campoTel.value = mascaraTel(campoTel.value);
     });
@@ -799,12 +793,12 @@ if (formPerfil) {
         campoCpf.value = mascaraCpf(campoCpf.value);
     });
 
-    // o estado só aceita letras, sempre maiúsculas
+    
     campoEstado.addEventListener("input", function () {
         campoEstado.value = campoEstado.value.replace(/[^a-zA-Z]/g, "").toUpperCase();
     });
 
-    // ---------- Atualizar perfil ----------
+  
     formPerfil.addEventListener("submit", function (e) {
         e.preventDefault();
 
@@ -820,7 +814,7 @@ if (formPerfil) {
         const lista = lerClientes();
         const idAtual = clienteLogado().id;
 
-        // e-mail e CPF não podem ser de OUTRO cliente
+      
         const emailRepetido = lista.some(function (c) {
             return c.email === email && c.id !== idAtual;
         });
@@ -842,11 +836,11 @@ if (formPerfil) {
         alert("Perfil atualizado!");
     });
 
-    // ---------- Endereço: abrir o formulário ----------
+  
     document.getElementById("btn-editar-endereco").addEventListener("click", function () {
         const e = clienteLogado().endereco;
 
-        // se já existe endereço, preenche o formulário com ele
+       
         document.getElementById("end-cep").value = e ? mascaraCep(e.cep) : "";
         document.getElementById("end-rua").value = e ? e.rua : "";
         document.getElementById("end-numero").value = e ? e.numero : "";
@@ -863,7 +857,7 @@ if (formPerfil) {
         cardForm.classList.add("oculto");
     });
 
-    // ---------- Endereço: salvar ----------
+    
     formEndereco.addEventListener("submit", function (e) {
         e.preventDefault();
 
@@ -891,7 +885,7 @@ if (formPerfil) {
         mostrarEnderecoPerfil();
     });
 
-    // ---------- Endereço: remover ----------
+ 
     document.getElementById("btn-remover-endereco").addEventListener("click", function () {
         if (!confirm("Remover o endereço cadastrado?")) return;
 
@@ -903,7 +897,7 @@ if (formPerfil) {
         mostrarEnderecoPerfil();
     });
 
-    // ---------- Logout ----------
+ 
     document.getElementById("btn-logout").addEventListener("click", function () {
         localStorage.removeItem("clienteLogadoId");
         window.location.href = "index.html";
@@ -921,15 +915,15 @@ if (formPerfil) {
 
 
 
-// ===== FINALIZAR PEDIDO =====
+
 const botaoFinalizar = document.getElementById("btn-finalizar");
 
-// Põe um zero na frente: 5 vira "05"
+
 function doisDigitos(n) {
     return String(n).padStart(2, "0");
 }
 
-// Arredonda para 2 casas (evita 71.69999999)
+
 function arredondar(valor) {
     return Number(valor.toFixed(2));
 }
@@ -950,14 +944,14 @@ if (botaoFinalizar) {
             return;
         }
 
-        // --- Calcula os valores ---
+      
         let subtotal = 0;
         carrinho.forEach(function (item) {
             subtotal = subtotal + item.preco * item.qtd;
         });
         subtotal = arredondar(subtotal);
 
-        // --- Data e código do pedido ---
+       
         const agora = new Date();
         const dia = agora.getFullYear() + doisDigitos(agora.getMonth() + 1) + doisDigitos(agora.getDate());
         const hora = doisDigitos(agora.getHours()) + doisDigitos(agora.getMinutes()) + doisDigitos(agora.getSeconds());
@@ -965,7 +959,6 @@ if (botaoFinalizar) {
                           "T" + doisDigitos(agora.getHours()) + ":" + doisDigitos(agora.getMinutes()) + ":" + doisDigitos(agora.getSeconds());
         const codigo = dia + "-" + hora + "-C" + cliente.id;
 
-        // --- Monta a lista de itens ---
         const itens = [];
         carrinho.forEach(function (item) {
             itens.push({
@@ -976,7 +969,6 @@ if (botaoFinalizar) {
             });
         });
 
-        // --- Monta o pedido ---
         const pedido = {
             codigo_site: codigo,
             cliente: {
@@ -994,7 +986,7 @@ if (botaoFinalizar) {
             itens: itens
         };
 
-        // --- Gera o texto do JSON e baixa o arquivo ---
+      
         const texto = JSON.stringify({ pedidos: [pedido] }, null, 2);
 
         const link = document.createElement("a");
@@ -1002,8 +994,6 @@ if (botaoFinalizar) {
         link.download = "pedido-" + codigo + ".json";
         link.click();
 
-        // --- Guarda no navegador para o histórico (Etapa 7) ---
-        // (isso vem DEPOIS de gerar o arquivo, para não entrar nele)
         pedido.clienteId = cliente.id;
         pedido.status = "Recebido";
 
@@ -1011,7 +1001,7 @@ if (botaoFinalizar) {
         pedidos.push(pedido);
         localStorage.setItem("pedidos", JSON.stringify(pedidos));
 
-        // --- Esvazia o carrinho ---
+      
         salvarCarrinho([]);
 
         alert("Pedido " + codigo + " realizado!\nO arquivo foi baixado na pasta Downloads.");
@@ -1026,14 +1016,9 @@ if (botaoFinalizar) {
 
 
 
-
-
-
-
-// ===== HISTÓRICO DE PEDIDOS =====
 const listaHistorico = document.getElementById("lista-historico");
 
-// Escolhe a cor da etiqueta de acordo com o status
+
 function classeStatus(status) {
     if (status === "Em preparação") return "preparo";
     if (status === "Saiu para entrega") return "entrega";
@@ -1042,7 +1027,7 @@ function classeStatus(status) {
     return "recebido";
 }
 
-// "2026-11-09T19:30:45" vira "09/11/2026 19:30"
+
 function formatarData(texto) {
     const partes = texto.split("T");
     const data = partes[0].split("-");
@@ -1052,12 +1037,11 @@ function formatarData(texto) {
 if (listaHistorico) {
     const idAtual = clienteLogado().id;
 
-    // pega só os pedidos deste cliente
     const meusPedidos = (JSON.parse(localStorage.getItem("pedidos")) || []).filter(function (p) {
         return p.clienteId === idAtual;
     });
 
-    // os mais novos primeiro
+    
     meusPedidos.reverse();
 
     if (meusPedidos.length === 0) {
@@ -1067,7 +1051,7 @@ if (listaHistorico) {
     }
 
     meusPedidos.forEach(function (pedido) {
-        // monta o texto "2x Double Bacon, 1x Batata Frita"
+        
         const nomes = [];
         pedido.itens.forEach(function (item) {
             nomes.push(item.quantidade + "x " + item.nome);
