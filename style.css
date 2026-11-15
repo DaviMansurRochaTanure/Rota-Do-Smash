@@ -1210,7 +1210,7 @@ footer {
     display: flex;
 }
 
-/* @MEDIAS RESPONSIVIDADE*/
+
 
 @media (max-width: 900px) {
     #pagina-historico { width: 92%; }
